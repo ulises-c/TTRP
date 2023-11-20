@@ -62,7 +62,7 @@ class Configuration(metaclass=Singleton):
         self.IMGPATH = "img\\"
 
         # Serial Configuration
-        self.COM = 'COM4'
+        self.COM = 'COM6'
 
         #Video Input Configuration
         self.VID_INPUT = 1                    #defaults to 0

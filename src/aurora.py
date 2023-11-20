@@ -227,6 +227,8 @@ class Aurora:
         logging.info("Initialize Handle " + handle.ID)
 
         # Könnte Fehler werfen??
+        # if(debug_mode):
+        print(f"PINIT: {cmd} -> {cmd.encode()}")
         self.ser.write(cmd.encode())
         time.sleep(0.7)
         self.read_serial()
@@ -263,6 +265,7 @@ class Aurora:
             "\"")
 
         # Könnte Fehler werfen??
+        print(f"PENA {cmd} -> {cmd.encode()}")
         self.ser.write(cmd.encode())
         self.read_serial()
 
@@ -319,7 +322,7 @@ class Aurora:
             cmd = 'TSTART \r'
         else:
             option = int(option)
-            if ((option is 40 or option is 80)):
+            if ((option == 40 or option == 80)):
                 cmd = 'TSTART ' + str(option) + '\r'
             else:
                 raise ValueError(

@@ -175,16 +175,16 @@ class UltraVisView(tk.Frame):
 
         # Main Menu
         self.new_exam_but = tk.Button(self.menu_frame)
-        self.new_exam_but["text"] = "Neue Untersuchung"
+        self.new_exam_but["text"] = "New examination"
         self.open_exam_but = tk.Button(self.menu_frame)
-        self.open_exam_but["text"] = "Untersuchung \u00F6ffnen"
+        self.open_exam_but["text"] = "Open investigation"
         self.open_exam_but["state"] = 'disabled' if not self._debug else 'normal'
         self.open_eval_but = tk.Button(self.menu_frame)
-        self.open_eval_but["text"] = "Datensatz auswerten"
+        self.open_eval_but["text"] = "Evaluate data setn"
 
         # Setup Menu
         self.start_exam_but = tk.Button(self.menu_frame)
-        self.start_exam_but["text"] = "Untersuchung beginnen"
+        self.start_exam_but["text"] = "Start survey"
         self.activate_handle_but = tk.Button(self.menu_frame)
         self.activate_handle_but["text"] = "Try Activate Handles"
 
@@ -192,27 +192,27 @@ class UltraVisView(tk.Frame):
         self.track_but = tk.Button(self.menu_frame)
         self.track_but["text"] = "Start/Stop Tracking"
         self.save_record_but = tk.Button(self.menu_frame)
-        self.save_record_but["text"] = "Aufzeichnung speichern"
+        self.save_record_but["text"] = "Save recording"
         self.finish_exam_but = tk.Button(self.menu_frame)
-        self.finish_exam_but["text"] = "Untersuchung abschließen"
+        self.finish_exam_but["text"] = "Complete examination"
 
         #Navigation Menu
         self.calibrate_but = tk.Button(self.menu_frame)
-        self.calibrate_but["text"] = "Koordinatensystem kalibrieren"
+        self.calibrate_but["text"] = "Calibrate coordinate system"
         self.target_menu_frame = tk.Frame(self.menu_frame)
         self.target_but = tk.Button(self.target_menu_frame)
-        self.target_but["text"] = "Lade Zielpunkt"
+        self.target_but["text"] = "Load destination"
         self.target_var = tk.StringVar()
         self.target_var.set('')
         self.target_option_menu = tk.OptionMenu(self.target_menu_frame, self.target_var, ' ')
 
         self.nav_save_record_but = tk.Button(self.menu_frame)
-        self.nav_save_record_but["text"] = "Aufnehmen"
+        self.nav_save_record_but["text"] = "Record"
         self.switch_imgsrc_but = tk.Button(self.menu_frame)
-        self.switch_imgsrc_but["text"] = "Video-zu-Aufnahme wechseln"
+        self.switch_imgsrc_but["text"] = "Switch video to recording"
         self.switch_imgsrc_but["state"] = 'disabled'
         self.accept_record_but = tk.Button(self.menu_frame)
-        self.accept_record_but["text"] = "Aufzeichnung akzeptieren"
+        self.accept_record_but["text"] = "Accept recording"
         self.accept_record_but["state"] = 'disabled'
 
         #Start Navigation
@@ -221,17 +221,17 @@ class UltraVisView(tk.Frame):
 
         # Finish Examination Menu
         self.save_edit_but = tk.Button(self.menu_frame)
-        self.save_edit_but["text"] = "Editieren"
+        self.save_edit_but["text"] = "Edit"
 
         # Misc Buttons
         self.continue_but = tk.Button(self.menu_frame)
-        self.continue_but["text"] = "Fortfahren"
+        self.continue_but["text"] = "Continue"
         self.cancel_but = tk.Button(self.menu_frame)
-        self.cancel_but["text"] = "Abbrechen"
+        self.cancel_but["text"] = "Cancel"
         self.back_but = tk.Button(self.menu_frame)
-        self.back_but["text"] = "Zur\u00FCck"
+        self.back_but["text"] = "Back"
         self.mainmenu_but = tk.Button(self.menu_frame)
-        self.mainmenu_but["text"] = "Zum Hauptmenu"
+        self.mainmenu_but["text"] = "To the main menu"
         self.reinit_aua_but = tk.Button(self.menu_frame)
         self.reinit_aua_but["text"] = "Reinitialize Aurora"
         self.NOBUTTONSYET = tk.Button(self.menu_frame, text="Secret Blowup Button")
@@ -427,7 +427,7 @@ class UltraVisView(tk.Frame):
         self.newExam_frame.columnconfigure(0, weight=1, uniform=1)
         self.newExam_frame.columnconfigure(1, weight=1, uniform=1)
 
-        title_lb = tk.Label(self.newExam_frame, text="Untersuchungsdaten")
+        title_lb = tk.Label(self.newExam_frame, text="Examination data")
         title_lb.grid(row=0, column=0, columnspan=2, sticky=tk.NSEW)
 
         data_frame = tk.Frame(self.newExam_frame, padx=20)
@@ -435,16 +435,20 @@ class UltraVisView(tk.Frame):
         data_frame.columnconfigure(1, weight=65, uniform=1)
 
         # Reihenfolge der deklaration der Widgets bestimmt Darstellungsposition
-        self.doctor_lb = tk.Label(data_frame, text="Untersuchender Arzt")
+        self.doctor_lb = tk.Label(data_frame, text="Examining doctor")
         self.doctor_entry = tk.Entry(data_frame, bd=5)
         self.doctor_entry.insert(0, "Dr. med. vet. Baader")
         self.patient_lb = tk.Label(data_frame, text="Patient")
         self.patient_entry = tk.Entry(data_frame, bd=5)
-        self.patient_entry.insert(0, "Herr Bach")
-        self.exam_item_lb = tk.Label(data_frame, text="Untersuchungsgegenstand")
+        # self.patient_entry.insert(0, "Herr Bach")
+        self.patient_entry.insert(0, "Mr. Bach")
+        # self.exam_item_lb = tk.Label(data_frame, text="Untersuchungsgegenstand")
+        self.exam_item_lb = tk.Label(data_frame, text="Object of investigation")
         self.exam_item_textbox = tk.Text(data_frame, bd=5)
+        # self.exam_item_textbox.insert(
+        #     '1.0', "US Untersuchung am linken Lungenfl\u00FCgel\nGutartiger Tumor")
         self.exam_item_textbox.insert(
-            '1.0', "US Untersuchung am linken Lungenfl\u00FCgel\nGutartiger Tumor")
+            '1.0', "Ultrasound examination of the left lung\nBenign tumor")
         self.created_lb = tk.Label(data_frame, text="Erstellt am")
         self.created_entry = tk.Entry(data_frame, bd=5)
         dateTimeObj = datetime.now()
@@ -500,11 +504,17 @@ class UltraVisView(tk.Frame):
 
         self.setuphandle_frames = []
         self._current_setuphandle = None
+        # REFERENCEPOINT_SUGGESTIONS = [
+        #     'Ultraschallkopf',
+        #     'Rechter H\u00FCftknochen',
+        #     'Linker H\u00FCftknochen',
+        #     'Brustbein']
         REFERENCEPOINT_SUGGESTIONS = [
-            'Ultraschallkopf',
-            'Rechter H\u00FCftknochen',
-            'Linker H\u00FCftknochen',
-            'Brustbein']
+            'Ultrasound probe',
+            'Right hip bone',
+            'Left hip bone',
+            'Sternum']
+
         for i in range(4):
             handle_Frame = tk.Frame(
                 self.setup_frame, bg="white", padx=10, pady=10)
@@ -554,14 +564,16 @@ class UltraVisView(tk.Frame):
             hp.disable_widgets(widgets, disable_all=True)
             self._current_setuphandle["frame"]["bg"] = "white"
 
-        COLORS = ['GELBE', 'ROTE', 'GR\u00DCNE', 'BLAUE']
+        # COLORS = ['GELBE', 'ROTE', 'GR\u00DCNE', 'BLAUE']
+        COLORS = ['YELLOW', 'RED', 'GREEN', 'BLUE']
         HANDLENAME = None
         REFERENCEPOINT = [
             'Ultraschallkopf',
             'bspw. rechten H\u00FCftknochen',
             'bspw. linken H\u00FCftknochen',
             'bspw. Brustbein']
-        INSTRUCTION = f'Bitte befestigen sie die {COLORS[handle_index]} Spule an den Punkt {REFERENCEPOINT[handle_index]}'
+        # INSTRUCTION = f'Bitte befestigen sie die {COLORS[handle_index]} Spule an den Punkt {REFERENCEPOINT[handle_index]}'
+        INSTRUCTION = f'Please attach the {COLORS[handle_index]} coil to the point {REFERENCEPOINT[handle_index]}'
         COLORS = ['yellow', 'red', 'green', 'blue']
 
         self.set_setup_instruction(text=INSTRUCTION)
@@ -874,7 +886,7 @@ class UltraVisView(tk.Frame):
 
         if (not (all(isinstance(h, Handle) for h in position))):
             raise TypeError(f'Expected {Handle} for parameter position \
-                              and got {type(h) for h in position} instead.')
+                              and got {[type(h) for h in position]} instead.')
 
         self.position_summary_widgets = []
 
@@ -913,10 +925,10 @@ class UltraVisView(tk.Frame):
         self.openExamFrame = tk.Frame(master)
         self.openExamFrame.rowconfigure(0, weight=1, uniform=1)
         self.openExamFrame.columnconfigure(0,weight=1,uniform=1)
-        lb = tk.Label(self.openExamFrame,text="Geben Sie die E_ID zum oeffnen ein")
+        lb = tk.Label(self.openExamFrame,text="Enter the E_ID to open")
         self.examID_entry = tk.Entry(self.openExamFrame,bd=5)
 
-        self.lastE_IDs = tk.Label(self.openExamFrame,text="Zuletzt hinzugefuegte IDs")
+        self.lastE_IDs = tk.Label(self.openExamFrame,text="Recently added IDs")
 
         lb.pack(side=tk.TOP, pady=(20, 5),padx=(10))
         self.examID_entry.pack(side=tk.TOP, pady=(10),padx=(10))
@@ -1060,12 +1072,12 @@ class UltraVisView(tk.Frame):
             logger.debug("Switched to SavedImgFrame")
             self.USimg_frame.grid_forget()
             self.saved_img_frame.grid(row=0, column=0, padx=5, pady=2, sticky=tk.NSEW)
-            self.switch_imgsrc_but["text"] = "Wechsel zu Video"
+            self.switch_imgsrc_but["text"] = "Switch to video"
         elif self.saved_img_frame.winfo_ismapped():
             logger.debug("Switched to USimgframe")
             self.saved_img_frame.grid_forget()
             self.USimg_frame.grid(row=0, column=0, padx=5, pady=2, sticky=tk.NSEW)
-            self.switch_imgsrc_but["text"] = "Wechsel zu Aufnahme"
+            self.switch_imgsrc_but["text"] = "Switch to Recording"
         else:
             logger.debug("No Switcheruu today. Please check the call!")
 
@@ -1075,13 +1087,13 @@ class UltraVisView(tk.Frame):
         self.open_eval_frame = frame = tk.Frame(master)
         frame.rowconfigure(0, weight=1, uniform=1)
         frame.columnconfigure(0,weight=1,uniform=1)
-        lb = tk.Label(frame,text="Wählen Sie eine Evaluation ID zur Auswertung aus")
+        lb = tk.Label(frame,text="Select an evaluation ID for evaluation")
         self.eval_opts_var = tk.StringVar(frame)
         self.eval_opts_var.set('')
         self.eval_option_menu = tk.OptionMenu(frame, self.eval_opts_var, ' ')
 
         self.load_eval_but = tk.Button(frame)
-        self.load_eval_but["text"] = "Lade Auswertung"
+        self.load_eval_but["text"] = "Load evaluation"
 
         lb.pack(side=tk.TOP, pady=(20, 5),padx=(10))
         self.eval_option_menu.pack(side=tk.TOP, pady=(10),padx=(10))

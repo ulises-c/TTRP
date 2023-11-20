@@ -437,7 +437,8 @@ class UltraVisModel:
         df = df.set_index('E_ID')
         #logger.debug(df)
         try:
-            new_exam = self.t_examination.append(df,verify_integrity=True)
+            # new_exam = self.t_examination.append(df,verify_integrity=True)
+            new_exam = pd.concat([self.t_examination, df], verify_integrity=True)
             new_exam.to_csv(self.EXAMINATION_PATH)
             self.t_examination = new_exam
         except ValueError as e:
